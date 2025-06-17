@@ -1,0 +1,27 @@
+[
+  {
+    "id": 5,
+    "title": "Купить газировку",
+    "completed": false
+  },
+  {
+    "id": 4,
+    "title": "Купить помидоры",
+    "completed": true
+  },
+  {
+    "id": 3,
+    "title": "Купить огурцы",
+    "completed": false
+  },
+  {
+    "id": 2,
+    "title": "Купить яйца",
+    "completed": true
+  },
+  {
+    "id": 1,
+    "title": "Купить молоко",
+    "completed": false
+  }
+]
