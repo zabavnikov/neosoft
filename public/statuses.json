@@ -1,0 +1,14 @@
+[
+  {
+    "value": "",
+    "label": "Все"
+  },
+  {
+    "value": true,
+    "label": "Выполнено"
+  },
+  {
+    "value": false,
+    "label": "Активные"
+  }
+]

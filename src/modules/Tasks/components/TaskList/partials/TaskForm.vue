@@ -2,8 +2,8 @@
 import type { Task } from '../../../types.ts'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
-import InputText from '../../../components/form/InputText.vue'
-import Button from '../../../components/Button.vue'
+import InputText from '../../../../../components/form/InputText.vue'
+import Button from '../../../../../components/Button.vue'
 
 const store = useStore()
 const form = ref(formInitialState())

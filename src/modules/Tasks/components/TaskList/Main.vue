@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import TaskForm from './TaskForm.vue'
-import TaskItem from './TaskItem.vue'
+import TaskForm from './partials/TaskForm.vue'
+import TaskItem from './partials/TaskItem.vue'
 import { useStore } from 'vuex'
-import TaskOrderSelect from './TaskOrderSelect.vue'
-import type { Task } from '../../../types.ts'
+import TaskOrderSelect from './partials/TaskOrderSelect.vue'
+import type { Task } from '../../../../types.ts'
 
 const store = useStore()
 
 store.dispatch('fetchTasks')
+	.then(() => store.dispatch('fetchStatuses'))
 
 function doChangeStatus(task: Task) {
 	store.dispatch('changeTaskStatus', task)

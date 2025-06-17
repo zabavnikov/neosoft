@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import type { State, Task } from '../../types.ts'
+import type { State, Task, TaskStatus } from '../../types.ts'
 import { useQuery } from '../../composables/useQuery.ts'
 import { orderBy } from 'lodash-es'
 
@@ -9,6 +9,7 @@ export const store = createStore<State>({
 			taskId: 1,
 			order: '',
 			tasks: [],
+			statuses: [],
 			isLoading: false,
 		}
 	},
@@ -16,21 +17,8 @@ export const store = createStore<State>({
 		/**
 		 * Получаем список статусов для сортировки задач.
 		 */
-		getStatuses() {
-			return [
-				{
-					value: '',
-					label: 'Все',
-				},
-				{
-					value: true,
-					label: 'Выполнено',
-				},
-				{
-					value: false,
-					label: 'Активные',
-				},
-			]
+		getStatuses(state) {
+			return state.statuses
 		},
 
 		/**
@@ -88,6 +76,16 @@ export const store = createStore<State>({
 			if (state.taskId > 0) {
 				state.taskId -= 1
 			}
+		},
+
+		/**
+		 * Устанавливаем статусы..
+		 *
+		 * @param state
+		 * @param payload
+		 */
+		setStatuses(state, payload: TaskStatus[]) {
+			state.statuses = payload
 		},
 
 		/**
@@ -156,6 +154,21 @@ export const store = createStore<State>({
 		},
 	},
 	actions: {
+		/**
+		 * Эмулируем запрос на бэкенд, для извлечения статусов.
+		 *
+		 * @param context
+		 */
+		fetchStatuses(context) {
+			return new Promise((resolve) => {
+				setTimeout(async () => {
+					const statuses = await useQuery<Task[]>('statuses.json')
+					context.commit('setStatuses', statuses)
+					resolve(undefined)
+				}, 500)
+			})
+		},
+
 		/**
 		 * Эмулируем запрос на бэкенд, для извлечения задач.
 		 *

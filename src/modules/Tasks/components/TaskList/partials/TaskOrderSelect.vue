@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Select from '../../../components/form/Select.vue'
+import Select from '../../../../../components/form/Select.vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
