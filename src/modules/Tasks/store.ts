@@ -38,7 +38,7 @@ export const store = createStore<State>({
 		 *
 		 * @param state
 		 */
-		getTasks(state: State) {
+		getTasks(state) {
 			if (state.order !== '') {
 				return orderBy(
 					state.tasks,
@@ -55,7 +55,7 @@ export const store = createStore<State>({
 		 *
 		 * @param state
 		 */
-		hasTasks(state: State) {
+		hasTasks(state) {
 			return state.tasks.length > 0
 		},
 	},
@@ -66,7 +66,7 @@ export const store = createStore<State>({
 		 * @param state
 		 * @param taskId
 		 */
-		setTaskId(state: State, taskId: Task['id']) {
+		setTaskId(state, taskId: Task['id']) {
 			state.taskId = taskId
 		},
 
@@ -75,7 +75,7 @@ export const store = createStore<State>({
 		 *
 		 * @param state
 		 */
-		incrementTaskId(state: State) {
+		incrementTaskId(state) {
 			state.taskId += 1
 		},
 
@@ -84,7 +84,7 @@ export const store = createStore<State>({
 		 *
 		 * @param state
 		 */
-		decrementTaskId(state: State) {
+		decrementTaskId(state) {
 			if (state.taskId > 0) {
 				state.taskId -= 1
 			}
@@ -96,7 +96,7 @@ export const store = createStore<State>({
 		 * @param state
 		 * @param payload
 		 */
-		setTasks(state: State, payload: Task[]) {
+		setTasks(state, payload: Task[]) {
 			state.tasks = payload
 		},
 
@@ -106,7 +106,7 @@ export const store = createStore<State>({
 		 * @param state
 		 * @param payload
 		 */
-		addTask(state: State, payload: Task) {
+		addTask(state, payload: Task) {
 			payload.id = state.taskId
 			state.tasks.unshift(payload)
 		},
@@ -117,7 +117,7 @@ export const store = createStore<State>({
 		 * @param state
 		 * @param payload
 		 */
-		deleteTask(state: State, payload: Task) {
+		deleteTask(state, payload: Task) {
 			state.tasks = state.tasks.filter((task) => task.id !== payload.id)
 		},
 
@@ -127,7 +127,7 @@ export const store = createStore<State>({
 		 * @param state
 		 * @param payload
 		 */
-		changeTaskStatus(state: State, payload: Task) {
+		changeTaskStatus(state, payload: Task) {
 			const taskIndex = state.tasks.findIndex((task) => task.id === payload.id)
 
 			if (taskIndex !== -1) {
@@ -141,7 +141,7 @@ export const store = createStore<State>({
 		 * @param state
 		 * @param order
 		 */
-		changeOrder(state: State, order: State['order']) {
+		changeOrder(state, order: State['order']) {
 			state.order = order
 		},
 
@@ -151,7 +151,7 @@ export const store = createStore<State>({
 		 * @param state
 		 * @param status
 		 */
-		setLoadingStatus(state: State, status: boolean) {
+		setLoadingStatus(state, status: boolean) {
 			state.isLoading = status
 		},
 	},
