@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type Props = {
+interface Props {
 	type?: 'submit' | 'reset' | 'button'
 	loading?: boolean
 }
