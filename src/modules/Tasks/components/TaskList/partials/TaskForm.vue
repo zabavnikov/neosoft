@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Task } from '../../../types.ts'
+import type { Task } from '../../../../../types.ts'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import InputText from '../../../../../components/form/InputText.vue'
