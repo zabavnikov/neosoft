@@ -162,7 +162,7 @@ export const store = createStore<State>({
 		fetchStatuses(context) {
 			return new Promise((resolve) => {
 				setTimeout(async () => {
-					const statuses = await useQuery<Task[]>('statuses.json')
+					const statuses = await useQuery<TaskStatus[]>('statuses.json')
 					context.commit('setStatuses', statuses)
 					resolve(undefined)
 				}, 500)
