@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type Props = {
+interface Props {
 	placeholder?: string
 	loading?: boolean
 }
