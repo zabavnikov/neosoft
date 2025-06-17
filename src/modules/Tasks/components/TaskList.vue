@@ -3,10 +3,18 @@ import TaskForm from './TaskForm.vue'
 import TaskItem from './TaskItem.vue'
 import { useStore } from 'vuex'
 import TaskOrderSelect from './TaskOrderSelect.vue'
+import type { Task } from '../../../types.ts'
 
 const store = useStore()
 
 store.dispatch('fetchTasks')
+
+function doChangeStatus(task: Task) {
+	store.dispatch('changeTaskStatus', task)
+}
+function doDeleteTask(task: Task) {
+	store.dispatch('deleteTask', task)
+}
 </script>
 
 <template>
@@ -18,8 +26,8 @@ store.dispatch('fetchTasks')
 				v-for="task in store.getters.getTasks"
 				:key="task.id"
 				:task="task"
-				@complete="store.dispatch('changeTaskStatus', task)"
-				@delete="store.dispatch('deleteTask', task)"
+				@complete="doChangeStatus"
+				@delete="doDeleteTask"
 			/>
 		</ul>
 

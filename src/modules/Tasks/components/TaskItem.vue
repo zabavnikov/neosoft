@@ -6,8 +6,8 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-	(event: 'complete'): void
-	(event: 'delete'): void
+	(event: 'complete', task: Task): void
+	(event: 'delete', task: Task): void
 }>()
 </script>
 
@@ -20,8 +20,8 @@ const emit = defineEmits<{
 	>
 		<div class="task-list-item__title">{{ task.title }}</div>
 		<div class="task-list-item__actions">
-			<input type="checkbox" @change="emit('complete')" :checked="task.completed" />
-			<button type="button" @click="emit('delete')">X</button>
+			<input type="checkbox" @change="emit('complete', task)" :checked="task.completed" />
+			<button type="button" @click="emit('delete', task)">X</button>
 		</div>
 	</li>
 </template>
